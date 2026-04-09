@@ -12,6 +12,10 @@ import seaborn as sns
 import re
 from typing import List, Dict, Any, Optional
 
+# 配置matplotlib使用中文支持字体
+plt.rcParams['font.sans-serif'] = ['PingFang SC', 'Hiragino Sans GB', 'Heiti SC', 'SimHei', 'Arial Unicode MS']
+plt.rcParams['axes.unicode_minus'] = False  # 解决负号显示问题
+
 
 def hello_world(name: str = "World") -> str:
     """
@@ -26,22 +30,29 @@ def hello_world(name: str = "World") -> str:
     return f"Hello, {name}!"
 
 
-def clean_text(text: str) -> str:
+def clean_text(text: str, keep_chinese: bool = True) -> str:
     """
     文本清理函数 - 移除特殊字符和多余空格
     
     Args:
         text (str): 待清理的文本
+        keep_chinese (bool): 是否保留中文字符，默认为True
         
     Returns:
         str: 清理后的文本
     """
-    # 转换为小写
-    text = text.lower()
-    # 移除特殊字符，只保留字母、数字和空格
-    text = re.sub(r'[^a-zA-Z0-9\s]', '', text)
     # 移除多余空格
     text = re.sub(r'\s+', ' ', text).strip()
+    
+    if keep_chinese:
+        # 保留中文、英文、数字和空格
+        text = re.sub(r'[^\u4e00-\u9fa5a-zA-Z0-9\s]', '', text)
+    else:
+        # 转换为小写
+        text = text.lower()
+        # 移除特殊字符，只保留字母、数字和空格
+        text = re.sub(r'[^a-zA-Z0-9\s]', '', text)
+    
     return text
 
 
