@@ -12,19 +12,22 @@ llm-algorithm 是一个初始阶段的大型语言模型(LLM)算法项目，目�
 ## 2. 构建与命令
 
 ### 开发环境设置
-- **虚拟环境**: 项目使用标准Python虚拟环境(`venv`目录)
+- **虚拟环境**: 项目使用Poetry进行依赖管理和虚拟环境创建
   ```bash
+  # 安装依赖并创建虚拟环境
+  poetry install
+  
   # 激活虚拟环境
-  source venv/bin/activate
+  poetry shell
   
   # 退出虚拟环境
-  deactivate
+  exit
   ```
 
-- **Jupyter Notebook**: 使用标准的Jupyter Notebook环境
+- **Jupyter Notebook**: 使用Poetry环境中的Jupyter Notebook
   ```bash
   # 启动Jupyter Notebook
-  jupyter notebook
+  poetry run jupyter notebook
   ```
 
 ### 开发命令
@@ -75,14 +78,18 @@ llm-algorithm 是一个初始阶段的大型语言模型(LLM)算法项目，目�
 - 目前没有使用环境变量或配置文件
 
 ### 依赖管理
-- 项目依赖目前未正式管理(无`requirements.txt`或`pyproject.toml`)
-- 建议使用：
+- 项目使用Poetry进行依赖管理
+- 主要配置文件：`pyproject.toml`和`poetry.lock`
+- 常用命令：
   ```bash
-  # 导出依赖
-  pip freeze > requirements.txt
-  
   # 安装依赖
-  pip install -r requirements.txt
+  poetry install
+  
+  # 添加新依赖
+  poetry add package-name
+  
+  # 导出依赖为requirements.txt格式
+  poetry export --without-hashes > requirements.txt
   ```
 
 ## 项目结构
@@ -92,9 +99,10 @@ llm-algorithm/
 ├── README.md          # 项目概述
 ├── LICENSE           # 许可证文件
 ├── .gitignore        # Git忽略规则
-├── notebooks/        # Jupyter笔记本目录
-│   └── hello_world.ipynb  # Hello World示例
-└── venv/             # Python虚拟环境
+├── pyproject.toml    # Poetry配置文件
+├── poetry.lock       # Poetry依赖锁定文件
+└── notebooks/        # Jupyter笔记本目录
+    └── hello_world.ipynb  # Hello World示例
 ```
 
 ## 开发建议
@@ -105,7 +113,7 @@ llm-algorithm/
    - `docs/`: 文档
    - `examples/`: 示例代码
 
-2. **依赖管理**: 引入正式的依赖管理工具，如`pip`+`requirements.txt`或`poetry`
+2. **依赖管理**: 已使用Poetry进行依赖管理
 
 3. **版本控制**: 遵循Git最佳实践，使用分支开发和Pull Request工作流
 
