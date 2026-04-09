@@ -12,6 +12,7 @@ jupyter = "^1.1.1"
 numpy = "^2.4.4"
 matplotlib = "^3.10.8"
 seaborn = "^0.13.2"
+torchvision = "^0.26.0"
 
 [build-system]
 requires = ["poetry-core"]
