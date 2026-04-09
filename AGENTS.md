@@ -27,7 +27,7 @@ llm-algorithm 是一个初始阶段的大型语言模型(LLM)算法项目，目�
 - **Jupyter Notebook**: 使用Poetry环境中的Jupyter Notebook
   ```bash
   # 启动Jupyter Notebook
-  poetry run jupyter notebook
+  poetry run jupyter notebook --notebook-dir=notebooks
   ```
 
 ### 开发命令
