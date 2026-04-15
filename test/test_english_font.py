@@ -5,10 +5,10 @@
 import sys
 import os
 
-# 添加src目录到Python路径
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
+# 添加项目根目录到Python路径，这样可以正确导入src包
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
-from utils import plot_word_frequency, count_words, clean_text
+from src.utils import plot_word_frequency, count_words, clean_text
 
 # 测试英文数据
 sample_text = "Hello World! This is a sample text. Hello again!"
